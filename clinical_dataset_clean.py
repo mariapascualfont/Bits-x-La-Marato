@@ -49,22 +49,6 @@ pacients_no_rm = df[
     (pacients["RM3"] > 10)
 ]
 
-"""
-pacients_rmp["KIR"] = pacients_rmp["ID"].map(
-    df2.set_index("ID")["al·lels"]
-)
-pacients_rmm["KIR"] = pacients_rmm["ID"].map(
-    df2.set_index("ID")["al·lels"]
-)
-pacients_rm3["KIR"] = pacients_rm3["ID"].map(
-    df2.set_index("ID")["al·lels"]
-)
-pacients_no_rm["KIR"] = pacients_rm["ID"].map(
-    df2.set_index("ID")["al·lels"]
-)
-
-"""
-
 #Filtrar per Recaiguda ----------------------------------------------------
 
 
