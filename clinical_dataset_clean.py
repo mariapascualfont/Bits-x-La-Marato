@@ -17,7 +17,7 @@ pacients = df[
     }
 )
 
-# Conversió segura RM3 → float
+# Conversió segura RM3 → float RM3=Resposta Mol·lecular als 3 mesos
 pacients["RM3"] = (
     pacients["RM3"]
     .astype(str)
@@ -93,7 +93,7 @@ for col in bcr_cols:
 )
 
 
-# 2️ Detectar pujades
+# 2️ Detectar pujades respecte els altres mesos
 def hi_ha_pujada(row):
     valors = row[bcr_cols].values
     for i in range(len(valors) - 1):
@@ -107,7 +107,7 @@ def hi_ha_pujada(row):
 
 df["pujada_BCR_ABL"] = df.apply(hi_ha_pujada, axis=1)
 
-# 3️ Opcional: detectar entre quins mesos
+# 3️ Opcional: detectar entre quins mesos ha pujat aka recaiguda
 def mesos_pujada(row):
     pujades = []
     valors = row[bcr_cols].values
@@ -135,7 +135,7 @@ no_recaiguda = df[df["pujada_BCR_ABL"] == False]
 import pandas as pd
 import sqlite3
 
-# Crear còpia del df original
+# Crear còpia del df original per afegir noves columnes
 df2 = df.copy()
 
 # Inicialitzar columnes noves
