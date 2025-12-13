@@ -13,10 +13,13 @@ Els objectius del repte són
 ## 1. Software
 ## 2. Determinar variants al·lèliques
 Hem utilitzat el KIRCLE per inferir els genotips dels gens KIR a partir de dades de seqüenciació d'alt rendiment (fitxers BAM). Per tant, hem hagut de crear un shell script, alinear.sh, per convertir els fastaq a SAM file i finalment a BAM file. 
-També amb el shell script anomenat actualitzar_dbs.sh creem una database a partir del repositori oficial de EMBL-EBI del projecte IPD-KIR, per després poder 
+També amb el shell script anomenat actualitzar_dbs.sh creem una database a partir del repositori oficial d'IPD-KIR (EMBL-EBI), per després poder utilitzar aquesta referència al·lèlica actualitzada i curada per al genotipatge KIR dels teus pacients amb el programa KIRCLE.
+
 ## 3. Anàlisi de la base de dades
 ### 3.1 Netejar dades
 Per tal de deduir la relació entre les variants al·lèliques i el desenvolupament, hem de filtrar els pacients. Ho fem primer per resposta molecular (4 grups) i després per si han o no recaigut (2 grups). Hem utilitzat pandas, numpy i regular expressions, al fitxer clinical_dataset_clean.py.
+### 3.2 Tria de pacients
+Degut a la natura intensiva i requeridora del processament de dades bioinformàtiques, hem optat per seleccionar una subcohort representativa per a l'anàlisi, estratificada en quatre grups principals basats en la presència o absència de Resposta Molecular (RM). Dins de cada grup, hem seleccionat 8 pacients (un total de 32), mantenint una distribució equilibrada per gènere (4 dones i 4 homes), assegurant una variabilitat d'edats, i incloent una representació de l'evolució clínica (2 pacients amb recaiguda i 2 pacients sense recaiguda) per garantir la robustesa comparativa de la mostra.
 
-### 3.2 Anàlisi del dataset i visualització de dades
+### 3.3 Anàlisi del dataset i visualització de dades
 Per tal de visualitzar les dades, hem usat RStudio i ggplot, al fitxer data_visualization.R.
