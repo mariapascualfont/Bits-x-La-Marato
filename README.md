@@ -25,3 +25,4 @@ Degut a la natura intensiva i requeridora del processament de dades bioinformàt
 Hem fet uns quants tests de Chi-squared per intentar determinar si hi ha alguna correlació entre algunes de les dades dels pacients, al fitxer correlation_tests.R. Per tal de visualitzar les dades, hem usat RStudio i ggplot, al fitxer data_visualization.R.
 
 ## 4. Model Predictiu
+Finalment hem creat un model d'anàlisi de freqüència i risc predictiu dissenyat per avaluar la possible relació entre els al·lels KIR i la recaiguda clínica associada a cada al·lel i tipus de gen KIR en la cohort de pacients. No és un model predictiu d'aprenentatge automàtic, sinó una eina estadística.
