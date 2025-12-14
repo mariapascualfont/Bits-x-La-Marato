@@ -23,3 +23,5 @@ Degut a la natura intensiva i requeridora del processament de dades bioinformàt
 
 ### 3.3 Anàlisi del dataset i visualització de dades
 Hem fet uns quants tests de Chi-squared per intentar determinar si hi ha alguna correlació entre algunes de les dades dels pacients, al fitxer correlation_tests.R. Per tal de visualitzar les dades, hem usat RStudio i ggplot, al fitxer data_visualization.R.
+
+## 3. Model Predictiu
