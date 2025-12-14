@@ -12,10 +12,20 @@ Els objectius del repte són
    - i la possibilitat de mantenir la remissió després de la retirada del tractament.
 ## 1. Software
 ## 2. Determinar variants al·lèliques
-Hem utilitzat el KIRCLE per inferir els genotips dels gens KIR a partir de dades de seqüenciació d'alt rendiment (fitxers BAM). Per tant, hem hagut de crear un shell script, alinear.sh, per convertir els fastaq a SAM file i finalment a BAM file. 
-També amb el shell script anomenat actualitzar_dbs.sh creem una database a partir del repositori oficial d'IPD-KIR (EMBL-EBI), per després poder utilitzar aquesta referència al·lèlica actualitzada i curada per al genotipatge KIR dels pacients amb el programa KIRCLE.
-
+Hem utilitzat el KIRCLE per inferir els genotips dels gens KIR a partir de dades de seqüenciació d'alt rendiment (fitxers BAM). Per tant, hem hagut de fer un pas previ per preparar les dades i les bases de referència.
 Malauradament, no hem pogut provar el software amb tota la cohort de pacients i controls per falta de temps. Són un gran nombre de dades i un software lent. 
+
+## 2.1 Preparació de Dades i Bases de Referència
+Hem creat dos shell scripts:
+alinear.sh: Processa les dades de seqüenciació, convertint els fitxers fastq en un format d'alineament binari (BAM), necessari per a l'anàlisi posterior.
+actualitzar_dbs.sh: És fonamental per a la precisió, ja que genera una base de dades al·lèlica de referència actualitzada i curada utilitzant el repositori oficial d'IPD-KIR (EMBL-EBI).
+
+## 2.2 Ponderació Quadràtica per Resoldre l'Ambigüitat
+L'algorisme EM (Expectation-Maximization) original del KIRCLE (2019) utilitzava un compte binari de lectures: cada alineació era assignada amb un pes d'1, independentment de la seva qualitat. Aquesta aproximació resultava problemàtica en gens altament polimòrfics i homòlegs com els KIR, ja que generava ambigüitat entre al·lels gairebé idèntics (que només difereixen en un SNP).
+
+Per resoldre aquesta limitació, hem modificat la lògica central a EM_algorithm.py per substituir el compte binari per una ponderació quadràtica basada en el Bitscore de BLAST (x=Bitscore2). Bitscore és una mètrica logarítmica que quantifica la qualitat d'una alineació, penalitzant mismatches i gaps. En elevar el Bitscore al quadrat, s'accentua de manera desproporcionada la diferència entre alineaments perfectes (puntuació alta) i alineaments amb un sol error (puntuació lleugerament inferior).
+
+Aquest canvi converteix la qualitat de l'alineament en una mètrica de probabilitat molt més sensible. Penalitzem severament els al·lels que no coincideixen perfectament amb els reads, permetent a l'algorisme EM convergír més ràpidament i amb major seguretat cap al genotip correcte, distingint de forma efectiva entre variants al·lèliques gairebé idèntiques.
 
 ## 3. Anàlisi de la base de dades
 ### 3.1 Netejar dades
