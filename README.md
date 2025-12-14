@@ -22,4 +22,4 @@ Per tal de deduir la relació entre les variants al·lèliques i el desenvolupam
 Degut a la natura intensiva i requeridora del processament de dades bioinformàtiques, hem optat per seleccionar una subcohort representativa per a l'anàlisi, estratificada en quatre grups principals basats en la presència o absència de Resposta Molecular (RM). Dins de cada grup, hem seleccionat 8 pacients (un total de 32), mantenint una distribució equilibrada per gènere (4 dones i 4 homes), assegurant una variabilitat d'edats, i incloent una representació de l'evolució clínica (2 pacients amb recaiguda i 2 pacients sense recaiguda) per garantir la robustesa comparativa de la mostra.
 
 ### 3.3 Anàlisi del dataset i visualització de dades
-Per tal de visualitzar les dades, hem usat RStudio i ggplot, al fitxer data_visualization.R.
+Hem fet uns quants tests de Chi-squared per intentar determinar si hi ha alguna correlació entre algunes de les dades dels pacients, al fitxer correlation_tests.R. Per tal de visualitzar les dades, hem usat RStudio i ggplot, al fitxer data_visualization.R.
